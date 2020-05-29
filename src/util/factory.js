@@ -28,6 +28,9 @@ const plotRadar = function (title, blips, currentRadarName, alternativeRadars) {
     title = title.substring(0, title.length - 4)
   }
   document.title = title
+  if(process.env.RADAR_TITLE) {
+    document.title = process.env.RADAR_TITLE
+  }
   d3.selectAll('.loading').remove()
 
   var rings = _.map(_.uniqBy(blips, 'ring'), 'ring')
@@ -205,7 +208,12 @@ const GoogleSheetInput = function () {
     var queryString = window.location.href.match(/sheetId(.*)/)
     var queryParams = queryString ? QueryParams(queryString[0]) : {}
 
-    if (domainName && queryParams.sheetId.endsWith('csv')) {
+    // override queryParams with system SHEET configuration
+    if (process.env.SHEET) {
+      queryParams.sheetId = process.env.SHEET
+    }
+
+    if (queryParams && queryParams.sheetId.endsWith('csv')) {
       sheet = CSVDocument(queryParams.sheetId)
       sheet.init().build()
     } else if (domainName && domainName.endsWith('google.com') && queryParams.sheetId) {

@@ -43,7 +43,10 @@ const plugins = [
   new webpack.DefinePlugin({
     'process.env.CLIENT_ID': JSON.stringify(process.env.CLIENT_ID),
     'process.env.API_KEY': JSON.stringify(process.env.API_KEY),
-    'process.env.SKIP_GOOGLE_AUTH': JSON.stringify(process.env.SKIP_GOOGLE_AUTH)
+    'process.env.SKIP_GOOGLE_AUTH': JSON.stringify(process.env.SKIP_GOOGLE_AUTH),
+    'process.env.SHEET': JSON.stringify(process.env.SHEET),
+    'process.env.HOSTING_TERMS': JSON.stringify(process.env.HOSTING_TERMS),
+    'process.env.RADAR_TITLE': JSON.stringify(process.env.RADAR_TITLE)
   })
 ]
 

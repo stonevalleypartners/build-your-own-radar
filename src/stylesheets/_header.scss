@@ -49,7 +49,8 @@ header {
 
       img {
         vertical-align: middle;
-        width: 34%;
+        max-width: 34%;
+        max-height: 64px;
       }
     }
   }
