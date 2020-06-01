@@ -70,7 +70,7 @@ module.exports = {
 
   output: {
     path: buildPath,
-    publicPath: '/',
+    publicPath: process.env.PUBLIC_PATH || '/',
     filename: '[name].[hash].js'
   },
 
